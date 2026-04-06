@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+  <script src="bootstrap.bundle.min.js"></script>
+  <script src="jquery.min.js"></script>
+  <title>Delete Ledger Account</title>
+  
+</head>
+<body>
+  <h1>Delete Ledger Account</h1>
+  <div class="container">
+  <form id="addForm" class="form">
+    <label for="accountNo">Account No:</label>
+    <input type="text" id="accountNo" name="accountNo" required>
+    <br><br>
+    
+    <button type="submit" class="submit">Delete Account</button>
+    <button type="button" id="cancelButton" class="cancel" >Cancel</button>
+  </form>
+  </div>
+
+
+  <script>
+    document.getElementById('addForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form submission
+
+      // Get the input values
+      var accountNo = document.getElementById('accountNo').value.trim();
+
+
+      // Prepare the data as an object
+      var accountData = {
+        acc_no: accountNo
+      };
+
+      // Perform the API request to Lambda function
+      $.ajax({
+        type: 'post',
+        url: "https://lzcuh1dprf.execute-api.us-east-1.amazonaws.com/default/g4_p4_deleteledger",
+        data: JSON.stringify(accountData),
+        dataType: 'json',
+        success: function(response) {
+          console.log(response); // Check the response
+          alert('Account deleted successfully');
+          displayAccount(accountData); // Display the new account in the table
+          clearForm(); // Clear the form inputs
+        },
+        error: function() {
+          console.log('Error while deleting account');
+        }
+      });
+    });
+    document.getElementById('cancelButton').addEventListener('click', function (event) {
+
+clearForm();
+
+// Optionally, you can refresh the page using:
+
+// location.reload();
+
+});
+
+
+  </script>
+</body>
+</html>

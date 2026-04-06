@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Search Student</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="bootstrap.min.css" rel="stylesheet" />
+    <script src="jquery.min.js"></script>
+    <script src="bootstrap.bundle.min.js"></script>
+</head>
+<body>
+  <h1>Search Student</h1>
+  <div class="container">
+    <form id="searchForm">
+      <label for="searchfield">Search Field:</label>
+      <select id="searchfield" name="searchfield">
+        <option value="">-- Select Account Type --</option>
+        <option value="rn">Roll number</option>
+        <option value="fname">First Name</option>
+        <option value="lname">Last Name</option>
+        <option value="course">Course</option>
+        <option value="doj">Date of Joining</option>
+        <option value="Fees">Fees</option>
+        <option value="isgrad">Is Graduated</option>
+      </select>
+      <input type="text" id="searchvalue" name="searchvalue">
+      <br><br>
+      <button type="submit" class="submit">GO</button>
+      <button onclick="window.location.href = './add_record.html'">ADD</button>
+    </form>
+    <br><br>
+  </div>
+  <div class="table">
+    <table id="resultsTable" border="1px  black">
+      <thead>
+        <tr>
+          <th>Roll Number</th>
+          <th>Name</th>
+          <th>Course</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="resultsBody">
+        <!-- Results will be dynamically inserted here -->
+      </tbody>
+    </table>
+  </div>
+  <script>
+    document.getElementById('searchForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form submission
+
+      // Get the search criteria
+      var searchfield = document.getElementById('searchfield').value.trim();
+      var searchval = document.getElementById('searchvalue').value.trim();
+
+      // Prepare the search criteria as an object
+      var searchData = {
+        search_field: searchfield,
+        search_value: searchval,
+      };
+
+      // Perform the search by sending an API request to Lambda function
+      $.ajax({
+        type: 'post',
+        url: "https://g2p6sqw2l5.execute-api.us-east-1.amazonaws.com/default/sim_master",
+        data: JSON.stringify(searchData),
+        dataType: 'json',
+        success: function(response) {
+          console.log(response); // Check the structure of the response
+          alert('Record Fetched successfully');
+          displayResults(response);
+        },
+        error: function() {
+          console.log('Error while performing search');
+        }
+      });
+    });
+
+    function displayResults(result) {
+      var tableBody = document.getElementById('resultsBody');
+      // Clear previous results
+      tableBody.innerHTML = '';
+
+      // Iterate over each item in the result array
+      result.forEach(function(item) {
+        var fullName = item.first_name + " " + item.last_name;
+        var edit = './update-student.html' +
+        "?rollno=" + encodeURIComponent(item.roll_no) +
+        "&fname=" + encodeURIComponent(item.first_name) +
+        "&lname=" + encodeURIComponent(item.last_name) +
+        "&course=" + encodeURIComponent(item.course) +
+        "&fee=" + encodeURIComponent(item.fees) +
+        "&isg=" + encodeURIComponent(item.is_grduate) +
+        "&doj=" + encodeURIComponent(item.date_of_joining) 
+        // "&email=" + encodeURIComponent(ite.email);
+        var del = "./delete-record.html" +
+        "?rollno=" + encodeURIComponent(item.roll_no) +
+        "&fname=" + encodeURIComponent(item.first_name) +
+        "&lname=" + encodeURIComponent(item.last_name) +
+        "&course=" + encodeURIComponent(item.course) +
+        "&fee=" + encodeURIComponent(item.fees) +
+        "&isg=" + encodeURIComponent(item.is_grduate) +
+        "&doj=" + encodeURIComponent(item.date_of_joining) 
+            var row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${item.roll_no}</td>
+          <td>${fullName}</td>
+          <td>${item.course}</td>
+          <td>
+            <button onclick="window.location.href = '${edit}' ;">Edit</button>
+            <br><br>
+            <button onclick="window.location.href = '${del}';">Delete</button>
+
+          </td>
+        `;
+        tableBody.appendChild(row);
+      });
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+

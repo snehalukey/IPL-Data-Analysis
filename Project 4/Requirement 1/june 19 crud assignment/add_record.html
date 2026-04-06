@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Add Contact</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="bootstrap.min.css" rel="stylesheet" />
+    <script src="jquery.min.js"></script>
+    <script src="bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#shwBtn").click(function () {
+                var values = $("#my_form").serializeArray();
+                values = values.concat(
+                    $("#my_form input[type=checkbox]:not(:checked)").map(function () {
+                        return { name: this.name, value: false };
+                    }).get()
+                );
+                // var carsValue = $('#city').find(":selected").val();
+                // var carsItem = { name: "City", value: carsValue };
+                // values.push(carsItem);
+                var formParamValues = JSON.stringify(values);
+
+                $.ajax({
+                    type: 'post',
+                    url: "https://a2z5ie4ae9.execute-api.us-east-1.amazonaws.com/default/sim_student",
+                    data: formParamValues,
+                    success: function (data) {
+                        alert('Success');
+                        alert(data);
+                    },
+                    error: function () {
+                        console.log('Error');
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <h2>ADD CONTACT</h2>
+    <form action="#" name="my_form" id="my_form">
+        <table border="1" style="width: 100%;">
+            <tr>
+                <th style="width: 50%;">Field</th>
+                <th style="width: 50%;">Value</th>
+            </tr>
+            <tr>
+                <td>Roll no</td>
+                <td>
+                    <input type="text" id="rollno" name="rollno">
+                </td>
+            </tr>
+            <tr>
+                <td>First Name</td>
+                <td>
+                    <input type="text" id="fname" name="fname">
+                </td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td>
+                    <input type="text" id="lname" name="lname">
+                </td>
+            </tr>
+            <tr>
+                <td>Course</td>
+                <td>
+                    <input type="text" id="course" name="course">
+                </td>
+            </tr>
+            <tr>
+                <td>Date of Joining</td>
+                <td>
+                    <input type="date" id="doj" name="doj">
+                </td>
+            </tr>
+            <tr>
+                <td>Fees</td>
+                <td>
+                    <input type="number" id="fees" name="fees">
+                </td>
+            </tr>
+            <tr>
+                <td>Is Graduated</td>
+                <td>
+                    <input type="checkbox" id="isg" name="isg">
+                </td>
+            </tr>
+        </table>
+        <br><br>
+        <input id="shwBtn" type="button" value="Submit data" />
+    </form>
+</body>
+</html>

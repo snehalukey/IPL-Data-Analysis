@@ -1,0 +1,131 @@
+body{
+  background-color: aquamarine;
+}
+nav {
+    display: flex;
+    justify-content: center ;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    background-color: #d87e7e;
+    font-weight: 300;
+    height: 66px;
+  }
+
+  ul{
+    color: black;
+  
+  }
+  
+ 
+  .horizontal-nav {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    margin-top: 30px;
+    font-size: 25px;
+  }
+ 
+  .horizontal-nav li {
+    margin-right: 3px; /* Adjust the spacing between navigation items */
+    color: black;
+    font-weight: bold;
+    
+  }
+
+  li{
+    margin-right: 10px;
+  }
+  
+  .horizontal-nav li a {
+    text-decoration: none;
+    color: black;
+
+  }
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 160px;
+}
+h1{
+    text-align: center;
+    margin-top: 15px;
+}
+
+
+#searchForm{
+    margin: 10px;
+    border: 3px solid red;
+    padding: 10px;
+}
+#addForm{
+  margin: 10px;
+  border: 3px solid red;
+  padding: 10px;
+  margin-top: 95px;
+}
+
+input[type="submit"] {
+
+    margin-top: 10px;
+
+    padding: 10px 20px;
+
+    background-color: #4CAF50;
+
+    color: white;
+
+    border: none;
+
+    cursor: pointer;
+
+  }
+
+  .table{
+    display: table;
+  margin: 0 auto; /* Add this line to center the table horizontally */
+  border-collapse: separate;
+  box-sizing: border-box;
+  text-indent: initial;
+  border-spacing: 2px;
+  border-color: gray;
+  justify-content: center;
+  margin-top: 35px;
+  }
+
+  .table2{
+    display: table;
+  margin: 0 auto; /* Add this line to center the table horizontally */
+  border-collapse: separate;
+  box-sizing: border-box;
+  text-indent: initial;
+  border-spacing: 2px;
+  border-color: gray;
+  justify-content: center;
+  margin-top: 95px;
+  }
+
+  .cancel {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  .submit{
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+
+  }
+
+  
+  
+  
+  

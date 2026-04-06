@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="bootstrap.bundle.min.js"></script>
+    <script src="jquery.min.js"></script>
+  <title>Search Voucher</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  
+</head>
+<body>
+  <h1>Search Voucher</h1>
+  <div class="container">
+  <form id="searchForm" >
+    <label for="accountNo">Voucher:</label>
+    <input type="text" id="accountNo" name="accountNo">
+    <button type="submit" class="submit">Search</button>
+  </form>
+</div>
+<div class="table">
+  <table id="resultsTable" border="1px  black">
+    <thead>
+      <tr>
+        <th>txn_id</th>
+        <th>voucher_code</th>
+        <th>txn_date</th>
+        <th>txn_type</th>
+        <th>acc_no</th>
+        <th>txn_amt</th>
+        <th>source_system_id</th>
+        <th>source_system_txn_id</th>
+      </tr>
+    </thead>
+    <tbody id="resultsBody">
+      <!-- Results will be dynamically inserted here -->
+    </tbody>
+  </table>
+</div>
+
+  <script>
+document.getElementById('searchForm').addEventListener('submit', function (event) {
+  event.preventDefault(); // Prevent form submission
+
+  // Get the search criteria
+  var accountNo = document.getElementById('accountNo').value.trim();
+
+  // Prepare the search criteria as an object
+  var searchData = {
+    acc_no: accountNo
+  };
+
+  // Perform the search by sending an API request to Lambda function
+  $.ajax({
+    type: 'post',
+    url: "https://68u0m15pgk.execute-api.us-east-1.amazonaws.com/default/g4_p4_searchvoucher",
+    data: JSON.stringify(searchData),
+    dataType: 'json',
+    success: function (response) {
+  console.log(response); // Check the structure of the response
+  alert('Record Fetched successfully');
+  displayResults(response);
+},
+
+    error: function () {
+      console.log('Error while performing search');
+    }
+  });
+});
+
+function displayResults(result) {
+  var tableBody = document.getElementById('resultsBody');
+
+  // Clear previous results
+  tableBody.innerHTML = '';
+
+  // Iterate over each item in the result array
+  result.forEach(function (item) {
+    var row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${item.txn_id}</td>
+      <td>${item.voucher_code}</td>
+      <td>${item.txn_date}</td>
+      <td>${item.txn_type}</td>
+      <td>${item.acc_no}</td>
+      <td>${item.txn_amt}</td>
+      <td>${item.source_system_id}</td>
+      <td>${item.source_system_txn_id}</td>
+    `;
+    tableBody.appendChild(row);
+  });
+}
+
+
+
+  </script>
+</body>
+</html>

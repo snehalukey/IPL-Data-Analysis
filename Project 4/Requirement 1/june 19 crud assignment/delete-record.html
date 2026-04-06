@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Delete</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="bootstrap.min.css" rel="stylesheet" />
+    <script src="jquery.min.js"></script>
+    <script src="bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <div id="studentDetails"></div>
+
+    <script>
+        // Retrieve URL parameters
+        var params = new URLSearchParams(window.location.search);
+    
+        // Get parameter values
+        var rn = params.get('rollno') ;
+        var fn = params.get('fname') ;
+        var ln = params.get('lname') ;
+        var fee = params.get('fee') ;
+        var isg = params.get('isg') ;
+        var doj = params.get('doj') ;
+        var course = params.get('course');
+    
+        // Display parameter values
+        var studentDetailsDiv = document.getElementById('studentDetails');
+        studentDetailsDiv.innerHTML = `
+          <p>Roll Number: ${rn}</p>
+          <p>First Name: ${fn}</p>
+          <p>Last Name: ${ln}</p>
+          <p>Course: ${course}</p>
+          <p>fees: ${fee}</p>
+          <p>is_graduated: ${isg}</p>
+          <p>date of joining: ${doj}</p>
+        `;
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#shwBtn").click(function () {
+                var values = $("#my_form").serializeArray();
+                values = values.concat(
+                    $("#my_form input[type=checkbox]:not(:checked)").map(function () {
+                        return { name: this.name, value: false };
+                    }).get()
+                );
+
+                var formParamValues = JSON.stringify(values);
+
+                $.ajax({
+                    type: 'post',
+                    url: "https://a2z5ie4ae9.execute-api.us-east-1.amazonaws.com/default/sim_student",
+                    data: formParamValues,
+                    success: function (data) {
+                        alert('Success');
+                        alert(data);
+                    },
+                    error: function () {
+                        console.log('Error');
+                    }
+                });
+            });
+        });
+    </script>
+
+    <h2>DELETE RECORD</h2>
+    <form action="#" name="my_form" id="my_form">
+        <input id="shwBtn" type="button" value="Delete" />
+    </form>
+
+    
+</body>
+</html>

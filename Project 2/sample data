@@ -1,0 +1,50 @@
+No,Tran_ref_id,Transaction_dt,Transaction_desc,amt,gst,custom_duty
+20,329-12020-0021,03-May-23," Buying a Staple Gun",7692.230769,384.61,76.92
+40,329-12020-0041,03-May-23," Buying a Stud Finder",3703.666667,185.18,37.04
+60,329-12020-0061,03-May-23," Buying a Miter Box",99999,4999.95,999.99
+80,329-12020-0081,03-May-23," Buying a Tapered Plug Cutter",5263.105263,263.16,52.63
+100,329-12020-0101,03-May-23," Purchase of Sander",12499.875,624.99,125
+120,329-12020-0121,04-May-23," Purchase of Angle Grinder",99999,4999.95,999.99
+140,329-12020-0141,04-May-23," Purchase of Utility Hooks",3333.3,166.67,33.33
+160,329-12020-0161,04-May-23," Purchase of Wire Shelving",19999.8,999.99,200
+180,329-12020-0181,04-May-23,"Payment for Woodworking Chisels",3333.3,166.67,33.33
+200,329-12020-0201,05-May-23," Payment for Soldering Iron",3333.3,166.67,33.33
+220,329-12020-0221,05-May-23," Payment for Chalk Line Reel",5882.294118,294.11,58.82
+240,329-12020-0241,06-May-23," Payment for Staple Assortment",7692.230769,384.61,76.92
+260,329-12020-0261,06-May-23," Payment for Wire Nuts",3448.241379,172.41,34.48
+280,329-12020-0281,06-May-23," Buying a Utility Knife",3448.241379,172.41,34.48
+300,329-12020-0301,06-May-23," Buying a Rivet Gun",5263.105263,263.16,52.63
+320,329-12020-0321,06-May-23," Buying a Hinge Boring Bit",3448.241379,172.41,34.48
+340,329-12020-0341,06-May-23," Buying a Heat Gun",9999.9,500,100
+360,329-12020-0361,06-May-23," Purchase of Sandpaper Pack",24999.75,1249.99,250
+380,329-12020-0381,06-May-23," Purchase of Wood Stain",9999.9,500,100
+400,329-12020-0401,06-May-23," Purchase of Putty Knife",8333.25,416.66,83.33
+420,329-12020-0421,06-May-23," Purchase of Corner Braces",3571.392857,178.57,35.71
+440,329-12020-0441,06-May-23,"Payment for Nails and Screws",3333.3,166.67,33.33
+460,329-12020-0461,06-May-23," Payment for Carpenter's Square",3448.241379,172.41,34.48
+480,329-12020-0481,06-May-23," Payment for Hinge Set",6249.9375,312.5,62.5
+500,329-12020-0501,06-May-23," Payment for Pipe Bender",5555.5,277.78,55.56
+520,329-12020-0521,06-May-23," Payment for Masonry Anchor Kit",99999,4999.95,999.99
+540,329-12020-0541,06-May-23," Buying a Leveling Tool",7142.785714,357.14,71.43
+560,329-12020-0561,06-May-23," Buying a Caulking Gun",5882.294118,294.11,58.82
+580,329-12020-0581,06-May-23," Buying a Plunger",33333,1666.65,333.33
+600,329-12020-0601,06-May-23," Buying a Safety Ladder",33333,1666.65,333.33
+620,329-12020-0621,06-May-23," Purchase of Tape Measure",33333,1666.65,333.33
+640,329-12020-0641,07-May-23," Purchase of Tool Belt",5263.105263,263.16,52.63
+660,329-12020-0661,07-May-23," Purchase of Paint Stripper",14285.57143,714.28,142.86
+680,329-12020-0681,07-May-23," Purchase of C-Clamps",6249.9375,312.5,62.5
+700,329-12020-0701,08-May-23,"Purchase of Power Drill",3448.241379,172.41,34.48
+720,329-12020-0721,08-May-23," Payment for Glue Gun and Sticks",6666.6,333.33,66.67
+740,329-12020-0741,08-May-23," Payment for Pipe Wrench",49999.5,2499.98,500
+760,329-12020-0761,10-May-23," Payment for Pipe Cutters",99999,4999.95,999.99
+780,329-12020-0781,10-May-23," Payment for Eye Bolts",11111,555.55,111.11
+800,329-12020-0801,10-May-23," Transaction for Pliers",5882.294118,294.11,58.82
+820,329-12020-0821,10-May-23," Transaction for Air Compressor",99999,4999.95,999.99
+840,329-12020-0841,10-May-23," Transaction for Wire Strippers",9999.9,500,100
+860,329-12020-0861,10-May-23," Transaction for Router Bits",33333,1666.65,333.33
+880,329-12020-0881,10-May-23,"Payment for Woodworking Chisels",4166.625,208.33,41.67
+900,329-12020-0901,10-May-23," Payment for Soldering Iron",3333.3,166.67,33.33
+920,329-12020-0921,10-May-23," Payment for Chalk Line Reel",3999.96,200,40
+940,329-12020-0941,10-May-23," Payment for Staple Assortment",7142.785714,357.14,71.43
+960,329-12020-0961,10-May-23," Payment for Wire Nuts",24999.75,1249.99,250
+980,329-12020-0981,10-May-23," Buying a Staple Gun",3846.115385,192.31,38.46

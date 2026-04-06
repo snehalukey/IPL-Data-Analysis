@@ -1,0 +1,2 @@
+txn_id,voucher_code,txn_type,txn_date,acc_name,txn_amt,source_system_id,source_system_txn_id,acc_no
+2,7215843609,C,2023-09-25 07:27 AM,Excise Duty,30.19,1,FOTFjOPYEvGuwM,ED123

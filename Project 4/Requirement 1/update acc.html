@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="bootstrap.bundle.min.js"></script>
+   
+    <title>Update Ledger Account</title>
+</head>
+<body>
+    <h1>Update Ledger Account</h1>
+    <div class="container">
+        <form id="addForm" class="form">
+            <label for="accountNo">Account No:</label>
+            <input type="text" id="accountNo" name="accountNo" required>
+            <br><br>
+
+            <label for="accountName">Account Name:</label>
+            <input type="text" id="accountName" name="accountName" required>
+            <br><br>
+            <label for="accountType">Account Type:</label>
+            <select id="accountType" name="accountType" required>
+                <option value="">-- Select Account Type --</option>
+                <option value="I">Income</option>
+                <option value="E">Expense</option>
+                <option value="L">Liability</option>
+                <option value="A">Asset</option>
+            </select>
+            <br><br>
+
+            <label for="accountDesc">Account Description:</label>
+            <textarea id="accountDesc" name="accountDesc" required></textarea>
+            <br><br>
+            <button type="submit" class="submit">Update Account</button>
+            <button type="button" id="cancelButton" class="cancel">Cancel</button>
+        </form>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#addForm').on('submit', function (event) {
+                event.preventDefault(); // Prevent form submission
+
+                // Get the input values
+                var accountNo = $('#accountNo').val().trim();
+                var accountName = $('#accountName').val().trim();
+                var accountType = $('#accountType').val();
+                var accountDesc = $('#accountDesc').val().trim();
+
+                // Prepare the data as an object
+                var accountData = {
+                    acc_no: accountNo,
+                    acc_name: accountName,
+                    acc_type: accountType,
+                    acc_desc: accountDesc
+                };
+
+                // Perform the API request to Lambda function
+                $.ajax({
+                    type: 'post',
+                    url: 'https://becsa8kk75.execute-api.us-east-1.amazonaws.com/default/g4_p4_updateledger',
+                    data: JSON.stringify(accountData),
+                    dataType: 'json',
+                    success: function (response) {
+                        console.log(response); // Check the response
+                        alert('Account added successfully');
+                        displayAccount(accountData); // Display the new account in the table
+                        clearForm(); // Clear the form inputs
+                        alert('Check table');
+                    },
+                    error: function () {
+                        console.log('Error while adding account');
+                    }
+                });
+            });
+
+            $('#cancelButton').on('click', function (event) {
+                clearForm();
+            });
+
+
+            function clearForm() {
+                $('#accountNo').val('');
+                $('#accountName').val('');
+                $('#accountType').val('');
+                $('#accountDesc').val('');
+            }
+        });
+    </script>
+</body>
+</html>
